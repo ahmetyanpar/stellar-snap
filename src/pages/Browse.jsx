@@ -4,8 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
-const NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
-
 function Browse() {
     const [date, setDate] = useState('');
     const [apod, setApod] = useState(null);
@@ -22,7 +20,7 @@ function Browse() {
         setLoading(true);
         setError(null);
 
-        fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${date}`)
+        fetch(`/api/apod?date=${date}`)
         .then(res => {
             if (!res.ok) {
                 throw new Error("No image found for this date.");

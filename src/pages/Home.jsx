@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
-
 function Home() {
   const [apod, setApod] = useState(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`)
+    fetch(`/api/apod`)
       .then(res => res.json())
       .then(data => {
         setApod(data);
